@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="card">
+<h4 class="text-center" style="margin: 0; padding: 0px;">2. (%) Distribution by Make </h4>
+    <div class="card-body" style="padding: 2px 0;">
+        <table class="table table-striped" style="margin-top: 0; padding-top: 0px;">
+            <thead>
+                <th>Make</th>
+                <th>Distribution</th>                    
+            </thead>
+            <tbody>
+                <!-- extracting result -->
+                <tr *ngFor="let result of results">
+                    <td>{{ result.Make }}</td>            
+                    <td>{{ result.Distribution }}</td>                                                        
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card">
+        <h4 class="text-center" style="margin: 0; padding: 0px;">5. Defination of CSV files </h4>
+        <!-- extracting each csv data type as in table -->
+        <div class="card-body" style="padding: 2px 0;" *ngFor="let result of results  | keyvalue"> 
+            <!-- showing key as csv file name -->
+            <p>{{ result.key }}</p>
+            <div class="repeat-result">                
+                <table class="table table-striped" style="margin-top: 0; padding-top: 0px;">
+                    <thead>
+                        <th>field</th>
+                        <th>type</th>                    
+                        <th>required</th>
+                    </thead>
+                    <tbody>
+                        <!-- extracting data -->
+                        <tr  *ngFor="let r of result.value">
+                            <td>{{ r.field }}</td>            
+                            <td>{{ r.type }}</td>
+                            <td>{{ r.required }}</td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+        </div>
+    </div>
+</div>
