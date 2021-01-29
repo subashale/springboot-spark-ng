@@ -6,11 +6,13 @@ Full-stack application with Spring-boot, Apache Spark and Angular
 2. Nodejs
 
 # Run
-*. download jar file from: https://drive.google.com/file/d/1vJXxv2ILZVhGZsm1srI8CUY4EM5DKXYi/view?usp=sharing
-*. npm install
-
-1. java -jar springboot-spark-rest.jar
-2. cd fullstack-ng && ng serve
+1. download jar file from: https://drive.google.com/file/d/1vJXxv2ILZVhGZsm1srI8CUY4EM5DKXYi/view?usp=sharing
+2. npm install
+3. java -jar springboot-spark-rest.jar
+4. cd fullstack-ng && ng serve
+5. route to http://localhost:4200
+6. upload files which are in data folder
+7. refresh page then results will be available.
 
 # Approach / Requirement
 
