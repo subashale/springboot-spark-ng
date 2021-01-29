@@ -6,7 +6,9 @@ Full-stack application with Spring-boot, Apache Spark and Angular
 2. Nodejs
 
 # Run
+*. download jar file from: https://drive.google.com/file/d/1vJXxv2ILZVhGZsm1srI8CUY4EM5DKXYi/view?usp=sharing
 *. npm install
+
 1. java -jar springboot-spark-rest.jar
 2. cd fullstack-ng && ng serve
 
