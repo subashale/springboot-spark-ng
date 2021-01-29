@@ -4,6 +4,7 @@ Full-stack application with Spring-boot, Apache Spark and Angular
 # Requirements
 1. Java 1.8+
 2. Nodejs
+3. Angular 11.0.5
 
 # Run
 1. download jar file from: https://drive.google.com/file/d/1vJXxv2ILZVhGZsm1srI8CUY4EM5DKXYi/view?usp=sharing
