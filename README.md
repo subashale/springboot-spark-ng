@@ -1,6 +1,15 @@
 # Data Analysis and Application Development
 Full-stack application with Spring-boot, Apache Spark and Angular
 
+# Requirements
+1. Java 1.8+
+2. Nodejs
+
+# Run
+*. npm install
+1. java -jar springboot-spark-rest.jar
+2. cd fullstack-ng && ng serve
+
 # Approach / Requirement
 
 1. write a console application that fulfills the above requirements
