@@ -16,55 +16,53 @@ export class FileuploadComponent implements OnInit {
   // current file
   currentFile?: File;
   // for progress bar
-  progress = 0;
+  progressInfos: any[] = [];
   // action response
-  message = '';
-
+  message: string[] = [];
   // file information 
   fileInfos?: Observable<Fileupload[]>;
+    
 
   constructor(private fileUploadService: FileuploadService) { }
 
   // holds selected file 
-  selectFile(event: any): void {
+  selectFiles(event: any): void {
+    this.message = [];
+    this.progressInfos = [];
     this.selectedFiles = event.target.files;
   }
 
-  // file uploading
-  upload(): void {
-    this.progress = 0; 
-
-    // if file selected
+  uploadFiles(): void {
+    this.message = [];
+  
     if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      
-      if (file) {
-        this.currentFile = file;
-        // call to upload service
-        this.fileUploadService.upload(this.currentFile).subscribe(
-          (event: any) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              this.progress = Math.round(100 * event.loaded / event.total);
-            } else if (event instanceof HttpResponse) {
-              this.message = event.body.message;
-              this.fileInfos = this.fileUploadService.getFiles();
-            }
-          },
-          (err: any) => {
-            console.log(err);
-            this.progress = 0;
-  
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the file!';
-            }
-  
-            this.currentFile = undefined;
-          });
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload(i, this.selectedFiles[i]);
       }
-  
-      this.selectedFiles = undefined;
+    }
+  }
+
+  // file uploading
+  upload(idx: number, file: File): void {
+    this.progressInfos[idx] = { value: 0, fileName: file.name };
+
+    if (file) {
+      this.fileUploadService.upload(file).subscribe(
+        (event: any) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+          } else if (event instanceof HttpResponse) {
+            const msg = 'Uploaded the file successfully: ' + file.name;
+            this.message.push(msg);
+            this.fileInfos = this.fileUploadService.getFiles();
+          }
+        },
+        (err: any) => {
+          this.progressInfos[idx].value = 0;
+          const msg = 'Could not upload the file: ' + file.name;
+          this.message.push(msg);
+          this.fileInfos = this.fileUploadService.getFiles();
+        });
     }
   }
 
