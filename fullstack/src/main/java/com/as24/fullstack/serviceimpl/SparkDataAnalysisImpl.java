@@ -13,6 +13,9 @@ import org.apache.spark.sql.types.StructField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -34,8 +37,12 @@ public class SparkDataAnalysisImpl implements SparkDataAnalysis {
     public Dataset<Row> listingsDS;
 
     // fixed location
-    public final String contactsData = "data\\contacts.csv";
-    public final String listingsData = "data\\listings.csv";
+    private final Path root = Paths.get("data");
+//    java.nio.file.Path path = java.nio.file.Paths.get(home, "my", "app", "dir");
+//    boolean directoryExists = java.nio.file.Files.exists(path);
+
+    public final String contactsData = root+ File.separator+"contacts.csv";
+    public final String listingsData = root+File.separator+"listings.csv";
 
     // dataframe reader with header
     public DataFrameReader getSparkSession() {
